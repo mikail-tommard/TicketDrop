@@ -1,8 +1,9 @@
 # macOS
 .DS_Store
 
-# Local workshop guide
+# Local workshop materials
 /WORKSHOP.md
+/site/
 
 # Local configuration
 .env

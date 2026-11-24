@@ -7,10 +7,26 @@ import (
 	"time"
 
 	"github.com/mikail-tommard/TicketDrop/internal/adapters/httpapi"
+	"github.com/mikail-tommard/TicketDrop/internal/adapters/memory"
+	"github.com/mikail-tommard/TicketDrop/internal/domain"
+	"github.com/mikail-tommard/TicketDrop/internal/usecase"
 )
 
 func main() {
-	api := httpapi.New()
+	conserts := make(map[int]*domain.Concert, 0)
+
+	concert, err := domain.NewConcert(1, "Вечер джаза", "Концерт в пятницу")
+	if err != nil {
+		log.Fatalf("не удалось создать демоконцерт: %v", err)
+	}
+
+	conserts[concert.ID()] = concert
+
+	repo := memory.NewMemory(conserts)
+
+	svc := usecase.NewService(repo)
+
+	api := httpapi.New(svc)
 
 	server := &http.Server{
 		Addr:              ":8080",

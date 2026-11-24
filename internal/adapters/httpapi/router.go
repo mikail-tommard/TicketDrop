@@ -1,17 +1,31 @@
 package httpapi
 
-import "net/http"
+import (
+	"net/http"
 
-type Api struct{}
+	"github.com/mikail-tommard/TicketDrop/internal/usecase"
+)
 
-func New() *Api {
-	return &Api{}
+type Api struct {
+	svc *usecase.Service
+}
+
+type ConcertResponce struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+}
+
+func New(svc *usecase.Service) *Api {
+	return &Api{
+		svc: svc,
+	}
 }
 
 func (a *Api) Routes() http.Handler {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /livez", a.HandlerLivez)
+	mux.HandleFunc("GET /concert/{id}", a.GetConcertByID)
 
 	return mux
 }
