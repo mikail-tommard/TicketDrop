@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Local workshop guide
+/WORKSHOP.md
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Go build and test artifacts
+/bin/
+/api
+/worker
+*.test
+/coverage.out
+/coverage.html
