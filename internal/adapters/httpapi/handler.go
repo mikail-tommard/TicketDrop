@@ -24,13 +24,14 @@ func (a *Api) GetConcertByID(w http.ResponseWriter, r *http.Request) {
 
 	concert, err := a.svc.GetConcertByID(r.Context(), i)
 	if err != nil {
-		writeJSON(w, http.StatusInternalServerError, err.Error())
+		writeJSON(w, http.StatusNotFound, err.Error())
 		return
 	}
 
 	resp := ConcertResponce{
 		Title:       concert.Title(),
 		Description: concert.Desc(),
+		Available:   concert.Available(),
 	}
 
 	writeJSON(w, http.StatusOK, resp)

@@ -3,9 +3,10 @@ package domain
 import "errors"
 
 var (
-	ErrConcertID     = errors.New("Concert ID invalid")
-	ErrConcertTitile = errors.New("Concert Title invalid")
-	ErrConcertDesc   = errors.New("Concert Description invalid")
+	ErrConcertID        = errors.New("Concert ID invalid")
+	ErrConcertTitile    = errors.New("Concert Title invalid")
+	ErrConcertDesc      = errors.New("Concert Description invalid")
+	ErrConcertAvailable = errors.New("Concert Available invalid")
 
 	ErrConcertNotFound = errors.New("Concert not found")
 )

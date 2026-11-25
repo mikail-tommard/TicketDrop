@@ -6,13 +6,15 @@ type Concert struct {
 	id          int
 	title       string
 	description string
+	available   int
 }
 
-func NewConcert(id int, title, description string) (*Concert, error) {
+func NewConcert(id, available int, title, description string) (*Concert, error) {
 	concert := Concert{
 		id:          id,
 		title:       title,
 		description: description,
+		available:   available,
 	}
 
 	err := validate(concert)
@@ -37,6 +39,10 @@ func validate(concert Concert) error {
 	if len(concert.description) <= 0 {
 		return ErrConcertDesc
 	}
+
+	if concert.available < 0 {
+		return ErrConcertAvailable
+	}
 	return nil
 }
 
@@ -48,4 +54,7 @@ func (c *Concert) Title() string {
 }
 func (c *Concert) Desc() string {
 	return c.description
+}
+func (c *Concert) Available() int {
+	return c.available
 }

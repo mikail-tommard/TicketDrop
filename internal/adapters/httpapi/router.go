@@ -13,6 +13,7 @@ type Api struct {
 type ConcertResponce struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
+	Available   int    `json:"available"`
 }
 
 func New(svc *usecase.Service) *Api {
@@ -25,7 +26,7 @@ func (a *Api) Routes() http.Handler {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /livez", a.HandlerLivez)
-	mux.HandleFunc("GET /concert/{id}", a.GetConcertByID)
+	mux.HandleFunc("GET /concerts/{id}", a.GetConcertByID)
 
 	return mux
 }
