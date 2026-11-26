@@ -10,4 +10,7 @@ var (
 	ErrConcertCapacity  = errors.New("Concert Capacity invalid")
 
 	ErrConcertNotFound = errors.New("Concert not found")
+
+	ErrAlreadyBookerd = errors.New("Already booked")
+	ErrKey            = errors.New("Key invalid")
 )
