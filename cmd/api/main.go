@@ -15,7 +15,7 @@ import (
 func main() {
 	conserts := make(map[int]*domain.Concert, 0)
 
-	concert, err := domain.NewConcert(1, 10, "Вечер джаза", "Концерт в пятницу")
+	concert, err := domain.NewConcert(1, 10, 10, "Вечер джаза", "Концерт в пятницу")
 	if err != nil {
 		log.Fatalf("не удалось создать демоконцерт: %v", err)
 	}
