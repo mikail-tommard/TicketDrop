@@ -28,6 +28,16 @@ func NewReservation(id, buyerID string, concertID int, expiresAt time.Time) (*Re
 	}, nil
 }
 
+func FromStorageReservation(id, buyerID string, status ReservationStatus, concertID int, expiresAt time.Time) *Reservation {
+	return &Reservation{
+		id:        id,
+		buyerID:   buyerID,
+		concertID: concertID,
+		status:    status,
+		expiresAt: expiresAt,
+	}
+}
+
 func (r *Reservation) ID() string {
 	return r.id
 }
