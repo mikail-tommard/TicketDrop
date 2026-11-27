@@ -13,4 +13,5 @@ var (
 
 	ErrAlreadyBookerd = errors.New("Already booked")
 	ErrKey            = errors.New("Key invalid")
+	ErrSoldOut        = errors.New("no available seats")
 )

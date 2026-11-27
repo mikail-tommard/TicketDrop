@@ -69,7 +69,7 @@ func (r *Repo) CreateReservation(ctx context.Context, reservation *domain.Reserv
 	}
 
 	if affected == 0 {
-		return nil, errors.New("no available seats")
+		return nil, domain.ErrSoldOut
 	}
 
 	return domain.FromStorageReservation(id, buyerID, status, concertID, expiresAt), tx.Commit()
